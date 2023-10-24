@@ -6,13 +6,12 @@ import QuestionList from "./QuestionList";
 function App() {
   const [page, setPage] = useState("List");
   const [questionsList, setQuestionsList] = useState([])
-  useEffect(()=>{
+  useEffect(() => {
     fetch('http://localhost:4000/questions')
-    .then(res => res.json())
-    .then(questions => setQuestionsList(questions))
+      .then(res => res.json())
+      .then(questions => setQuestionsList(questions))
   }, [])
 
-  console.log(questionsList)
   /*
   In the App component: 
      1. pass the questionList as props to the QuestionList component
@@ -43,7 +42,11 @@ function App() {
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm /> : <QuestionList />}
+      {page === "Form" ?
+        <QuestionForm /> :
+        <QuestionList
+          questionsList={questionsList}
+        />}
     </main>
   );
 }
