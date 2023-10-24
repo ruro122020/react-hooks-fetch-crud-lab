@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AdminNavBar from "./AdminNavBar";
 import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 
 function App() {
   const [page, setPage] = useState("List");
+  const [questionsList, setQuestionsList] = useState([])
+  useEffect(()=>{
+    fetch('http://localhost:4000/questions')
+    .then(res => res.json())
+    .then(questions => setQuestionsList(questions))
+  }, [])
 
+  console.log(questionsList)
   /*
   In the App component: 
      1. pass the questionList as props to the QuestionList component
