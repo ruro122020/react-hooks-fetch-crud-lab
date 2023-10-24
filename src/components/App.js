@@ -43,8 +43,9 @@ function App() {
 
   //Function to pass as props to components
   function handleFormData(addQuestion) {
-    console.log(addQuestion)
-  }
+    setQuestionsList(prevQuestion=> [...prevQuestion, addQuestion])
+    }
+    console.log(questionsList)
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
