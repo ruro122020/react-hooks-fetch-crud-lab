@@ -1,10 +1,10 @@
 /*
 In the App component: 
-   1. pass the questionList as props to the QuestionList component(CHECK)
-   2. create a function to pass as props to QuestionForm to get the new question data
-       -In this function, add the new question to the questionsList (update state with new question info)
-In the QuestionForm component:
-    1. Any questions that are created by the QuestionForm need to be added to the questionsList array 
+   1. pass the questionList as props to the QuestionList component(DONE)
+   2. create a function to pass as props to QuestionForm to get the new question data(DONE)
+       -In this function, add the new question to the questionsList (update state with new question info)(DONE)
+In the QuestionForm component: (DONE)
+    1. Any questions that are created by the QuestionForm need to be added to the questionsList array (DONE)
           -the data structure should be: 
               {
                prompt: '',
@@ -13,9 +13,9 @@ In the QuestionForm component:
               }
           - use the function created in the App component to add the new question to the questionList array
 In the QuestionList component:
-  1. Display all the questions using the QuestionItem component
+  1. Display all the questions using the QuestionItem component(DONE)
   2. Delete and Update the questionList array in this component 
-      so we would need to pass in the setQuestionsList and questionList state as props
+      so we would need to pass in the setQuestionsList and questionList state as props to the QuestionList component
     1. To update a question
        -create a function to pass down as props to the QuestionItem component
           --this function should take in a updateQuestion argument and
@@ -42,19 +42,19 @@ function App() {
   }, [])
 
   //Function to pass as props to components
-  function handleFormData(addQuestion) {
+  function handleAddQuestion(addQuestion) {
     setQuestionsList(prevQuestion=> [...prevQuestion, addQuestion])
     }
-    console.log(questionsList)
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
       {page === "Form" ?
         <QuestionForm
-          onAddQuestion={handleFormData}
+          onAddQuestion={handleAddQuestion}
         /> :
         <QuestionList
           questionsList={questionsList}
+          setQuestionsList={setQuestionsList}
         />}
     </main>
   );

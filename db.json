@@ -98,17 +98,6 @@
       ],
       "correctIndex": 0,
       "id": 9
-    },
-    {
-      "prompt": "whatever",
-      "answers": [
-        "add",
-        "new",
-        "question",
-        "please"
-      ],
-      "correctIndex": 0,
-      "id": 10
     }
   ]
 }
