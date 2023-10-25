@@ -7,10 +7,23 @@ function QuestionList({ questionsList, setQuestionsList }) {
     const newQuestionsList = questionsList.filter(question => question.id !== deleteQuestion.id)
     setQuestionsList(newQuestionsList)
   }
+  function handleUpdateQuestion(updateQuestion){
+    const updateQuestionList = questionsList.map(question => {
+      if (question.id === updateQuestion.id){
+        return updateQuestion
+      }else{
+        return question
+      }
+    })
+    setQuestionsList(updateQuestionList)
+  }
+
+
   const displayQuestions = questionsList.map(question => <QuestionItem
     key={question.id}
     question={question}
     onDeleteQuestion={handleDeleteQuestion}
+    onUpdateQuestion={handleUpdateQuestion}
   />)
   return (
     <section>
