@@ -4,7 +4,8 @@ function QuestionList({ questionsList, setQuestionsList }) {
   
   //function to pass as props to components
   function handleDeleteQuestion(deleteQuestion) {
-    console.log(deleteQuestion)
+    const newQuestionsList = questionsList.filter(question => question.id !== deleteQuestion.id)
+    setQuestionsList(newQuestionsList)
   }
   const displayQuestions = questionsList.map(question => <QuestionItem
     key={question.id}

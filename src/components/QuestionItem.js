@@ -9,7 +9,7 @@ function QuestionItem({ question, onDeleteQuestion }) {
       method: 'DELETE'
     })
     .then(res => res.json())
-    .then(deletedQuestion => console.log('Deleted!'))
+    .then(deletedQuestion => onDeleteQuestion(question))
   }
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
