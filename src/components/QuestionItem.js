@@ -11,6 +11,22 @@ function QuestionItem({ question, onDeleteQuestion }) {
     .then(res => res.json())
     .then(deletedQuestion => onDeleteQuestion(question))
   }
+  const handleChangedAnswer=(e)=>{
+    const indexSelected = e.target.value
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        correctIndex: indexSelected
+      })
+    })
+    .then(res => res.json())
+    .then(question => console.log(question))
+    
+  }
+
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
       {answer}
@@ -23,7 +39,7 @@ function QuestionItem({ question, onDeleteQuestion }) {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
+        <select defaultValue={correctIndex} onChange={handleChangedAnswer}>{options}</select>
       </label>
       <button onClick={handleDeleteClick}>Delete Question</button>
     </li>
